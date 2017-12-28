@@ -1,7 +1,7 @@
 # phosphophyllite-docker
 
 ```shell
-$ git clone git@github.com:kajyuuen/phosphophyllite.git
+$ git clone git@github.com:kajyuuen/phosphophyllite-docker.git
 ```
 
 ```shell
