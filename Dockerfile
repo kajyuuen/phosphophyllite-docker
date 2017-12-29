@@ -1,11 +1,15 @@
 FROM ubuntu
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
+ENV LC_ALL en_US.UTF-8
 ENV PYENV_ROOT /root/.pyenv
 ENV PATH $PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH
 RUN apt-get update && \
-    apt-get install -y git mercurial build-essential libssl-dev libbz2-dev libreadline-dev libsqlite3-dev curl && \
+    apt-get install -y git emacs locales mercurial build-essential libssl-dev libbz2-dev libreadline-dev libsqlite3-dev curl && \
     curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
-RUN pyenv install 3.6.3
-RUN pyenv global 3.6.3
+RUN locale-gen en_US.UTF-8
+RUN pyenv install anaconda3-5.0.1
+RUN pyenv global anaconda3-5.0.1
 RUN pyenv rehash
-COPY requirements.txt ./
+RUN conda install -c https://conda.binstar.org/pymc pymc -y
 RUN pip install --no-cache-dir -r requirements.txt
