@@ -15,17 +15,16 @@ case $ANSWER in
 esac
 
 # docker run
-while [ "${CONTAINER_NAME}" == "" ]
-do
-  echo -n 'container_name > '
-  read CONTAINER_NAME
-done
-
-
 while [ "${IMAGE_NAME}" == "" ]
 do
   echo -n "image_name > "
   read IMAGE_NAME
+done
+
+while [ "${CONTAINER_NAME}" == "" ]
+do
+  echo -n 'container_name > '
+  read CONTAINER_NAME
 done
 
 echo -n "host_directory (default ./)> "
@@ -40,10 +39,10 @@ if [ "${CONTAINER_DIRECTORY}" == "" ];then
   CONTAINER_DIRECTORY="/tmp"
 fi
 
-echo -n "host_port (default 8888)> "
+echo -n "host_port (default 10000+uid)> "
 read HOST_PORT
 if [ "${HOST_PORT}" == "" ];then
-  HOST_PORT="8888"
+  HOST_PORT=`expr 10000 + $UID`
 fi
 
 eval "docker run -itd --name $CONTAINER_NAME -v $HOST_DIRECTORY:$CONTAINER_DIRECTORY -p $HOST_PORT:8888 $IMAGE_NAME jupyter notebook --ip=0.0.0.0 --port=8888 --allow-root --notebook-dir='$CONTAINER_NAME'"
