@@ -12,4 +12,3 @@ RUN pyenv install anaconda3-5.0.1
 RUN pyenv global anaconda3-5.0.1
 RUN pyenv rehash
 RUN conda install -c https://conda.binstar.org/pymc pymc -y
-RUN pip install --no-cache-dir -r requirements.txt
