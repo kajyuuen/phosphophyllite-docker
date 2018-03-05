@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM nvidia/cuda:8.0-cudnn6-runtime-ubuntu16.04
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
@@ -11,4 +11,3 @@ RUN locale-gen en_US.UTF-8
 RUN pyenv install anaconda3-5.0.1
 RUN pyenv global anaconda3-5.0.1
 RUN pyenv rehash
-RUN conda install -c https://conda.binstar.org/pymc pymc -y
