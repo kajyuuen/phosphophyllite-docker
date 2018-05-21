@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # docker build
+# imageを更新したいときだけyes
 echo -n 'Do you want to create a base image? [Y/n]> '
 read ANSWER
 case $ANSWER in
