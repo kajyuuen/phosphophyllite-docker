@@ -48,5 +48,5 @@ if [ "${HOST_PORT}" == "" ];then
   HOST_PORT=`expr 10000 + $UID`
 fi
 
-eval "docker run -itd --name $CONTAINER_NAME -v $HOST_DIRECTORY:$CONTAINER_DIRECTORY -p $HOST_PORT:8888 $IMAGE_NAME jupyter notebook --ip=0.0.0.0 --port=8888 --allow-root --notebook-dir='$CONTAINER_DIRECTORY'"
-echo "docker run -itd --name $CONTAINER_NAME -v $HOST_DIRECTORY:$CONTAINER_DIRECTORY -p $HOST_PORT:8888 $IMAGE_NAME jupyter notebook --ip=0.0.0.0 --port=8888 --allow-root --notebook-dir='$CONTAINER_DIRECTORY"
+eval "docker run --runtime=nvidia -itd --name $CONTAINER_NAME -v $HOST_DIRECTORY:$CONTAINER_DIRECTORY -p $HOST_PORT:8888 $IMAGE_NAME jupyter notebook --ip=0.0.0.0 --port=8888 --allow-root --notebook-dir='$CONTAINER_DIRECTORY'"
+echo "docker run --runtime=nvidia -itd --name $CONTAINER_NAME -v $HOST_DIRECTORY:$CONTAINER_DIRECTORY -p $HOST_PORT:8888 $IMAGE_NAME jupyter notebook --ip=0.0.0.0 --port=8888 --allow-root --notebook-dir='$CONTAINER_DIRECTORY"

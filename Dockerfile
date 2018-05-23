@@ -10,7 +10,7 @@ RUN pyenv install anaconda3-5.0.1
 RUN pyenv global anaconda3-5.0.1
 RUN pyenv rehash
 RUN pip install --upgrade pip
-RUN pip install sklearn-crfsuite mecab-python3
+RUN pip install sklearn-crfsuite mecab-python3 torch torchvision
 RUN curl -L -o CRF++-0.58.tar.gz 'https://drive.google.com/uc?export=download&id=0B4y35FiV1wh7QVR6VXJ5dWExSTQ'
 RUN tar -zxf CRF++-0.58.tar.gz
 WORKDIR CRF++-0.58
