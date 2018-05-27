@@ -64,15 +64,3 @@ RUN pyenv global anaconda3-5.0.1
 RUN pip install --upgrade pip
 RUN pip install sklearn-crfsuite mecab-python3 xgboost lightgbm
 RUN pyenv rehash
-
-# Install tini
-ENV TINI_VERSION v0.14.0
-ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
-RUN chmod +x /tini
-
-# LightGBM
-RUN cd /usr/local/src && mkdir lightgbm && cd lightgbm && \
-    git clone --recursive https://github.com/Microsoft/LightGBM && \
-    cd LightGBM && mkdir build && cd build && \
-    cmake -DUSE_GPU=1  -DOpenCL_LIBRARY=/usr/local/cuda/lib64/libOpenCL.so -DOpenCL_INCLUDE_DIR=/usr/local/cuda/include/ .. && \
-    make -j4
