@@ -29,10 +29,10 @@ do
 done
 
 # ホスト側のjupyter notebookディレクトリ
-echo -n "host_directory (default ./)> "
+echo -n "host_directory (default ~/)> "
 read HOST_DIRECTORY
 if [ "${HOST_DIRECTORY}" == "" ];then
-  HOST_DIRECTORY=$(cd $(dirname $0); pwd)
+  HOST_DIRECTORY="~/"
 fi
 
 # Docker側のjupyter notebookディレクトリ
