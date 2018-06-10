@@ -81,6 +81,6 @@ RUN curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/py
 RUN pyenv install anaconda3-5.0.1
 RUN pyenv global anaconda3-5.0.1
 RUN pip install --upgrade pip
-RUN pip install sklearn-crfsuite mecab-python3 xgboost
+RUN pip install sklearn-crfsuite mecab-python3 xgboost torch torchvision
 RUN pyenv rehash
 RUN cd /usr/local/src/lightgbm/LightGBM/python-package && python setup.py install --precompile --gpu
