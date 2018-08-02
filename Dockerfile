@@ -7,6 +7,7 @@ ENV OPENCL_LIBRARIES /usr/local/cuda/lib64
 ENV OPENCL_INCLUDE_DIR /usr/local/cuda/include
 ENV PYENV_ROOT /root/.pyenv
 ENV PATH $PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH
+ENV LC_ALL en_US.UTF-8
 
 RUN apt-get update && \
     apt-get install -y git \
@@ -47,10 +48,18 @@ RUN mkdir -p /etc/OpenCL/vendors && \
 # CRF++
 RUN curl -L -o CRF++-0.58.tar.gz 'https://drive.google.com/uc?export=download&id=0B4y35FiV1wh7QVR6VXJ5dWExSTQ'
 RUN tar -zxf CRF++-0.58.tar.gz
-WORKDIR CRF++-0.58
-RUN ./configure
-RUN make
-RUN make install
+RUN cd CRF++-0.58 && \
+    ./configure && \
+    make && \ 
+    make install
+
+# CRFsuite
+RUN curl -OL https://github.com/downloads/chokkan/liblbfgs/liblbfgs-1.10.tar.gz
+RUN tar xvzf liblbfgs-1.10.tar.gz
+RUN cd liblbfgs-1.10 && \
+    ./configure && \
+    make && \
+    make install && \
 
 # Open-mpi
 RUN cd /usr/local/src && mkdir openmpi && cd openmpi && \
