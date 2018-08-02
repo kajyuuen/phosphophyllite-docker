@@ -92,3 +92,4 @@ RUN cd /usr/local/src/lightgbm/LightGBM/python-package && python setup.py instal
 # Download JP font
 RUN cd /usr/local/share/fonts && \
     wget https://github.com/byrongibson/fonts/raw/master/backup/truetype.original/takao-gothic/TakaoPGothic.ttf
+RUN echo 'font.family: TakaoPGothic' >> /root/.pyenv/versions/anaconda3-5.0.1/lib/python3.6/site-packages/matplotlib/mpl-data/matplotlibrc
