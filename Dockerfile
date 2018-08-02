@@ -88,3 +88,7 @@ RUN pip install --upgrade pip
 RUN pip install sklearn-crfsuite mecab-python3 xgboost torch torchvision
 RUN pyenv rehash
 RUN cd /usr/local/src/lightgbm/LightGBM/python-package && python setup.py install --precompile --gpu
+
+# Download JP font
+RUN cd /usr/local/share/fonts && \
+    wget https://github.com/byrongibson/fonts/raw/master/backup/truetype.original/takao-gothic/TakaoPGothic.ttf
