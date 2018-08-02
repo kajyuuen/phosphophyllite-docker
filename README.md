@@ -6,10 +6,11 @@
   - mecab-ipadic-utf8
   - mecab-jumandic-utf8
 - CRF++
-  - sklearn-crfsuite
+- CRFsuite
 - OpenMPI
 - XGBoost
 - LightGBM
+
 ## How to Use
 
 ```shell
